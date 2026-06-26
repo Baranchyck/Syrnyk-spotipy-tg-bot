@@ -13,7 +13,6 @@ TOKEN = os.getenv("TELEGRAM_TOKEN")
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 dp.update.middleware(Logging())
-# dp.message.middleware(Logging())
 
 dp.include_router(auth_router)
 
