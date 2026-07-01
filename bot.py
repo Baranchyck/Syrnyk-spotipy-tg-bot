@@ -9,6 +9,8 @@ from aiogram.types import BotCommand
 from modules.auth.router import router as auth_router
 from modules.common.router import router as common_router
 
+from modules.auth.db import db_init
+
 from modules.common.commands import COMMANDS
 
 load_dotenv()
@@ -24,6 +26,7 @@ dp.include_router(common_router)
 
 @dp.startup()
 async def on_startup():
+    await db_init()
     await bot.set_my_commands(COMMANDS)
 
 if __name__ == "__main__":
